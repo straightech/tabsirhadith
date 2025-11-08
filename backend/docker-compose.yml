@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: fastapi_app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=mysql+aiomysql://appuser:apppass@db:3306/appdb
+    depends_on:
+      - db
+    # Do not expose backend to host, only internal Docker network
+    expose:
+      - "8000"
+
+  db:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./hadith-db-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    expose:
+      - "3306"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "7546:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
