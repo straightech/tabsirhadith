@@ -45,8 +45,8 @@
   ];
 </script>
 
-<div class="bgred flex p10 container ma text-center grid gap10">
-  <section class="ma grid gap10">
+<div class="bgred flex p3 container ma text-center grid gap10">
+  <section class="ma grid gap10 mt10">
     <h1>
       The Hadith of the Prophet Muhammad صلى الله عليه و سلم
     </h1>
@@ -70,7 +70,7 @@
       {/each}
     </section>
 
-    <section class="grid-(~ cols-2) gap5 h-fit">
+    <section class="grid lg:grid-cols-2 gap5 h-fit">
       {#each rightSide as x}
         <a class="text-xl brd rounded gap3 grid p6 hover:brd-primary" href="/{x.href}">
           <i class="i-ph:book-bookmark text-6xl mx-auto"></i>

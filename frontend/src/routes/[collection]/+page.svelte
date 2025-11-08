@@ -9,7 +9,7 @@
     authorData[0];
 </script>
 
-<main class="max-w-[1000px] mx-auto grid gap10 p10">
+<main class="max-w-[1000px] mx-auto grid gap3 lg:gap10 p3 lg:p10">
   <section class="brd p5 rounded flex flex-col gap3">
     <h1 class="font-medium frow justify-between text-primary">
       <span> {author.en_txt} </span>

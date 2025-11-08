@@ -1,15 +1,16 @@
 <script lang="ts">
+
   let { params, data } = $props();
   const { chapters } = data;
   import Loader from "$lib/ui/loaders/chapters.svelte";
 </script>
 
-<div class="grid gap20 max-w-[1000px] mx-auto p10">
+<div class="grid gap20 max-w-[1000px] mx-auto p3 lg:p10">
   {#await chapters}
     <Loader />
   {:then chapters}
     {#each chapters as chapter}
-      <section class="grid gap5">
+      <section class="grid gap3 lg:gap5">
         <p class="text-xl brd p5 rounded frow">
           <i class="i-lets-icons:book"></i>
           {chapter.name}
@@ -17,7 +18,7 @@
 
         {#each chapter.hadiths as hadith}
           <div
-            class="grid-(~ cols-[1fr_auto_1fr] gap5) bg-secondary p5 rounded leading-loose"
+            class="grid lg:grid-cols-[1fr_auto_1fr] gap5 bg-secondary p5 rounded leading-loose"
           >
             <div class="grid gap3 h-fit">
               {@html hadith.english_text}
