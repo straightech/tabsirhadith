@@ -45,7 +45,7 @@
   ];
 </script>
 
-<div class="bgred flex p3 lg:p10 container ma text-center grid gap10">
+<div class="bgred flex p10 container ma text-center grid gap10">
   <section class="ma grid gap10">
     <h1>
       The Hadith of the Prophet Muhammad صلى الله عليه و سلم

@@ -58,7 +58,7 @@ body {
 }
 
 h1 {
-  @apply text-2xl lg:text-4xl font-bold tracking-tight;
+  @apply text-2xl lg:text-3xl font-bold tracking-tight;
 }
 
 h2 {

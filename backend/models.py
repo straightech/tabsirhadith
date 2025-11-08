@@ -6,16 +6,17 @@ class Collection(Base):
     __tablename__ = "collections"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    books = relationship("Book", back_populates="collection")
+    books = relationship("Book", back_populates="collection", lazy="selectin")
 
 class Book(Base):
     __tablename__ = "books"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
+    visible_id = Column(Integer)
     pages = Column(Integer)
     collection_id = Column(Integer, ForeignKey("collections.id"))
     collection = relationship("Collection", back_populates="books")
-    chapters = relationship("Chapter", back_populates="book")
+    chapters = relationship("Chapter", back_populates="book", lazy="selectin")
 
 class Chapter(Base):
     __tablename__ = "chapters"
@@ -23,7 +24,7 @@ class Chapter(Base):
     name = Column(String, nullable=False)
     book_id = Column(Integer, ForeignKey("books.id"))
     book = relationship("Book", back_populates="chapters")
-    hadiths = relationship("Hadith", back_populates="chapter")
+    hadiths = relationship("Hadith", back_populates="chapter", lazy="selectin")
 
 class Hadith(Base):
     __tablename__ = "hadiths"

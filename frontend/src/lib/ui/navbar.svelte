@@ -10,6 +10,18 @@
     localStorage.theme = theme;
     document.querySelector("html").className = theme;
   };
+
+  const login = async () => {
+    const url = "https://api.tabsirhadith.com/collections";
+
+    const resp = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({ id_token: "testt" }),
+    });
+
+    const data = await resp.json();
+    console.log(data);
+  };
 </script>
 
 <nav class="p2 frow border-b-(1 solid border)">
@@ -29,5 +41,10 @@
         : "i-line-md:moon-twotone-loop"}
     >
     </div>
+  </button>
+
+  <button class="btn-primary" onclick={login}>
+    <i class="i-hugeicons:login-circle-01"></i>
+    Login
   </button>
 </nav>

@@ -7,21 +7,23 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "bash src/sh/getdb.sh && svelte-kit sync || echo ''",
+		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@haze-ui/preset": "^0.0.8",
-		"@iconify/json": "^2.2.384",
-		"@sveltejs/adapter-auto": "^6.0.0",
-		"@sveltejs/kit": "^2.22.0",
-		"@sveltejs/vite-plugin-svelte": "^6.0.0",
-		"svelte": "^5.0.0",
-		"svelte-check": "^4.0.0",
-		"typescript": "^5.0.0",
-		"unocss": "^66.5.1",
-		"vite": "^7.0.4"
+		"@haze-ui/preset": "^0.0.9",
+		"@iconify/json": "^2.2.394",
+		"@sveltejs/adapter-auto": "^6.1.1",
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/adapter-vercel": "^5.10.3",
+		"@sveltejs/kit": "^2.46.4",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"svelte": "^5.39.11",
+		"svelte-check": "^4.3.3",
+		"typescript": "^5.9.3",
+		"unocss": "^66.5.3",
+		"vite": "^7.1.9"
 	},
 	"dependencies": {
 		"@haze-ui/svelte": "^0.0.10"

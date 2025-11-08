@@ -2,6 +2,6 @@ fastapi
 uvicorn[standard]
 sqlalchemy
 sqladmin
-asyncpg
+aiomysql
 aiosqlite
-psycopg2-binary
+cryptography

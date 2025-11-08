@@ -3,7 +3,7 @@ import {
   presetWind4,
   presetIcons,
   transformerDirectives,
-  // presetTypography,
+  presetTypography,
 } from "unocss";
 
 import hazeuiPreset from "@haze-ui/preset";
@@ -12,7 +12,7 @@ export default defineConfig({
   presets: [
     presetIcons({ scale: 1.2 }),
     presetWind4(),
-    // presetTypography(),
+    presetTypography(),
     hazeuiPreset(),
   ],
 

@@ -8,9 +8,11 @@ services:
     volumes:
       - .:/app
     environment:
-      - DATABASE_URL=mysql+aiomysql://appuser:apppass@db:3306/appdb
+      - ENV=production
+      - DATABASE_URL=mysql+aiomysql://sappuser:apppass@db:3306/appdb
     depends_on:
-      - db
+        db:
+            condition: service_healthy
     # Do not expose backend to host, only internal Docker network
     expose:
       - "8000"
@@ -22,13 +24,17 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: appdb
-      MYSQL_USER: appuser
+      MYSQL_USER: sappuser
       MYSQL_PASSWORD: apppass
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./hadith-db-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-    expose:
-      - "3306"
+      - ./hadith-db-complete.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+          test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+          timeout: 5s
+          retries: 20
+    ports:
+      - "33061:3306"
 
   nginx:
     image: nginx:latest

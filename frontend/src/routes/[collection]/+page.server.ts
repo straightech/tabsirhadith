@@ -1,14 +1,14 @@
-import collections from "$lib/collections";
+import authorData from "$lib/data/authors";
 
-interface Props {
-  collection: any[];
-  params: { collection: string };
-}
+export const load = async ({ params }) => {
+  const collection = authorData.find((x) => x.href === params.collection);
+  const id = collection?.id || 1;
 
-export const load = ({ params }: Props) => {
-  let collection = collections.find((x) => x.name === params.collection);
-  collection = collection?.books || []
+  const books = fetch(
+    `https://api.tabsirhadith.com/collections/${id}/books`,
+  )
+    .then((x) => x.json())
+    .then((data) => data.sort((a, b) => a.visible_id - b.visible_id));
 
-  const books = collection.map(x => x.name);
   return { books };
 };
